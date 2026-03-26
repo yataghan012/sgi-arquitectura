@@ -589,7 +589,7 @@ nav.nav-scrolled .nav-links {
 }
 
 .service-title {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 400;
   color: var(--color-dark-fg);
   margin-bottom: 8px;
@@ -597,7 +597,7 @@ nav.nav-scrolled .nav-links {
 
 .service-desc {
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.8;
   color: rgba(248, 244, 241, 0.5);
   max-width: 500px;
