@@ -48,17 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const current = window.scrollY;
     if (current > 100) {
-      nav.style.position = 'fixed';
-      nav.style.top = current > lastScroll ? '-100px' : '0';
-      nav.style.transition = 'top 0.4s ease';
-      nav.style.background = 'rgba(18,18,18,0.9)';
-      nav.style.backdropFilter = 'blur(12px)';
-      nav.style.padding = '16px 96px';
+      nav.classList.add('nav-scrolled');
+      nav.style.top = current > lastScroll ? '-120px' : '0';
     } else {
-      nav.style.position = 'absolute';
-      nav.style.background = 'transparent';
-      nav.style.backdropFilter = 'none';
-      nav.style.padding = '24px 96px';
+      nav.classList.remove('nav-scrolled');
+      nav.style.top = '0';
     }
     lastScroll = current;
   }, { passive: true });
