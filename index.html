@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGI Arquitectura — Córdoba, Argentina</title>
+  <meta name="description" content="Estudio de arquitectura y diseño de interiores en Córdoba. Departamentos, PyMEs y edificios municipales." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ================================
+       HERO
+  ================================ -->
+  <section id="hero">
+
+    <!-- Fondo -->
+    <div class="hero-bg">
+      <img src="assets/hero-bg.jpg" alt="Arquitectura contemporánea" />
+    </div>
+
+    <!-- Navegación -->
+    <nav>
+      <!-- Reemplazar src con la ruta a tu logo real -->
+      <img src="assets/logo.png" alt="SGI Arquitectura" class="nav-logo" />
+      <ul class="nav-links">
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#estudio">Estudio</a></li>
+        <li><a href="#contacto" class="nav-cta">Agendar consulta</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenido hero -->
+    <div class="hero-content">
+      <div>
+        <span class="hero-line"></span>
+        <p class="hero-location">Córdoba, Argentina</p>
+        <h1 class="hero-title">
+          Diseñamos los<br>
+          <em>espacios que</em><br>
+          transforman
+        </h1>
+        <a href="#portafolio" class="hero-cta-link">
+          <span class="cta-line"></span>
+          Ver portafolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ================================
+       PORTAFOLIO
+  ================================ -->
+  <section id="portafolio">
+
+    <div class="section-header">
+      <div>
+        <p class="label section-label reveal-fade">01 — Proyectos seleccionados</p>
+        <h2 class="section-title reveal delay-2">Portafolio</h2>
+      </div>
+      <span class="line-reveal section-header-line delay-4"></span>
+    </div>
+
+    <!-- Filtros de categoría -->
+    <div style="display:flex; gap:24px; margin-bottom:48px; flex-wrap:wrap;">
+      <button class="filter-btn active" data-filter="all"
+        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-fg);border-bottom:1px solid var(--color-fg);padding-bottom:4px;">
+        Todos
+      </button>
+      <button class="filter-btn" data-filter="Residencial"
+        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
+        Residencial
+      </button>
+      <button class="filter-btn" data-filter="Comercial"
+        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
+        Comercial
+      </button>
+      <button class="filter-btn" data-filter="Institucional"
+        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
+        Institucional
+      </button>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Proyecto 1 -->
+      <div class="project-card reveal delay-1" data-category="Residencial">
+        <div class="project-img-wrap">
+          <img src="assets/project-1.jpg" alt="Departamento Nueva Córdoba" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Departamento Nva. Córdoba</h3>
+            <p class="project-category">Residencial</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2024</p>
+            <p class="project-area">185 m²</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="project-card reveal delay-2" data-category="Comercial">
+        <div class="project-img-wrap">
+          <img src="assets/project-2.jpg" alt="Oficinas Grupo Andino" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Oficinas Grupo Andino</h3>
+            <p class="project-category">Comercial</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2024</p>
+            <p class="project-area">420 m²</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="project-card reveal delay-3" data-category="Institucional">
+        <div class="project-img-wrap">
+          <img src="assets/project-3.jpg" alt="Centro Cultural Municipal" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Centro Cultural Municipal</h3>
+            <p class="project-category">Institucional</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2023</p>
+            <p class="project-area">1.200 m²</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 4 -->
+      <div class="project-card reveal delay-4" data-category="Residencial">
+        <div class="project-img-wrap">
+          <img src="assets/project-4.jpg" alt="Residencia Cerro de las Rosas" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Residencia Cerro de las Rosas</h3>
+            <p class="project-category">Residencial</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2023</p>
+            <p class="project-area">310 m²</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================
+       SERVICIOS
+  ================================ -->
+  <section id="servicios">
+
+    <div style="margin-bottom:80px;">
+      <p class="label section-label reveal-fade">02 — Lo que hacemos</p>
+      <h2 class="section-title reveal delay-2">Servicios</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-item reveal delay-2">
+        <span class="service-number">01</span>
+        <h3 class="service-title">Arquitectura</h3>
+        <p class="service-desc">Proyecto completo, dirección técnica, documentación ejecutiva y gestión de obra para edificios residenciales, comerciales e institucionales.</p>
+      </div>
+
+      <div class="service-item reveal delay-3">
+        <span class="service-number">02</span>
+        <h3 class="service-title">Diseño de interiores</h3>
+        <p class="service-desc">Conceptualización espacial, selección de materialidades, diseño de mobiliario a medida e iluminación arquitectónica.</p>
+      </div>
+
+      <div class="service-item reveal delay-4">
+        <span class="service-number">03</span>
+        <h3 class="service-title">Consultoría técnica</h3>
+        <p class="service-desc">Auditorías de proyecto, optimización de costos, estudios de factibilidad y asesoramiento en normativas municipales.</p>
+      </div>
+
+      <div class="service-item reveal delay-5">
+        <span class="service-number">04</span>
+        <h3 class="service-title">Remodelaciones</h3>
+        <p class="service-desc">Intervención integral en espacios existentes, puesta en valor patrimonial, ampliaciones y refuncionalización de inmuebles.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================
+       SOBRE NOSOTROS
+  ================================ -->
+  <section id="estudio">
+    <div class="about-grid">
+
+      <div>
+        <p class="label section-label reveal-fade">03 — Sobre nosotros</p>
+        <h2 class="section-title reveal delay-2">
+          Cada espacio<br>
+          <em style="font-style:italic;">cuenta algo</em>
+        </h2>
+      </div>
+
+      <div>
+        <p class="about-text reveal delay-3">
+          SGI Arquitectura nace en Córdoba con una premisa clara: que la arquitectura no es solo
+          estructura, sino la experiencia de quien la habita. Trabajamos con departamentos,
+          PyMEs y edificios municipales entendiendo que cada proyecto tiene su propia narrativa,
+          su escala y sus desafíos técnicos únicos.
+        </p>
+        <p class="about-text reveal delay-4">
+          Nuestro proceso integra diseño y ejecución técnica desde el primer trazo,
+          eliminando la distancia entre la idea y la obra construida.
+        </p>
+
+        <div class="stats-row">
+          <div class="reveal delay-5">
+            <span class="stat-value">12+</span>
+            <span class="stat-label">Años de experiencia</span>
+          </div>
+          <div class="reveal delay-6">
+            <span class="stat-value">85</span>
+            <span class="stat-label">Proyectos realizados</span>
+          </div>
+          <div class="reveal delay-7">
+            <span class="stat-value">15k</span>
+            <span class="stat-label">m² diseñados</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================
+       CONTACTO
+  ================================ -->
+  <section id="contacto">
+    <div class="contact-grid">
+
+      <!-- Columna izquierda -->
+      <div>
+        <p class="label contact-label reveal-fade">04 — Contacto</p>
+        <h2 class="contact-title reveal delay-2">
+          Empecemos a<br>
+          <em>proyectar juntos</em>
+        </h2>
+        <span class="line-reveal contact-divider delay-4"></span>
+        <p class="contact-desc reveal delay-5">
+          Contanos sobre tu proyecto. Agendá una consulta inicial sin cargo
+          y exploremos las posibilidades de tu espacio.
+        </p>
+        <a href="mailto:info@sgiarquitectura.com" class="btn-outline reveal delay-6">
+          Agendar consulta
+        </a>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="contact-info reveal delay-7">
+        <div>
+          <span class="contact-info-label">Email</span>
+          <p class="contact-info-value">info@sgiarquitectura.com</p>
+        </div>
+        <div>
+          <span class="contact-info-label">Teléfono</span>
+          <p class="contact-info-value">+54 351 000 0000</p>
+        </div>
+        <div>
+          <span class="contact-info-label">Ubicación</span>
+          <p class="contact-info-value">Córdoba, Argentina</p>
+        </div>
+        <div>
+          <span class="contact-info-label">Redes</span>
+          <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="reveal-fade delay-9">
+      <p>© 2025 SGI Arquitectura. Todos los derechos reservados.</p>
+      <p>Córdoba, Argentina</p>
+    </footer>
+
+  </section>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
