@@ -909,8 +909,8 @@ footer p {
 @media (max-width: 1024px) and (min-width: 769px) {
 
   .nav-logo {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
   }
 
   .hero-title {
