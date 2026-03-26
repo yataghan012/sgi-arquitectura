@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       cursor.style.left = mouseX + 'px';
-      cursor.style.top  = mouseY + 'px';
+      cursor.style.top = mouseY + 'px';
     });
 
     // Ring lag effect
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
       cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top  = ringY + 'px';
+      cursorRing.style.top = ringY + 'px';
       requestAnimationFrame(animateRing);
     }
     animateRing();
@@ -150,16 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hover en links y cards
     document.querySelectorAll('a, .project-card, button').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        cursor.style.width  = '12px';
+        cursor.style.width = '12px';
         cursor.style.height = '12px';
-        cursorRing.style.width  = '48px';
+        cursorRing.style.width = '48px';
         cursorRing.style.height = '48px';
         cursorRing.style.opacity = '0.6';
       });
       el.addEventListener('mouseleave', () => {
-        cursor.style.width  = '8px';
+        cursor.style.width = '8px';
         cursor.style.height = '8px';
-        cursorRing.style.width  = '32px';
+        cursorRing.style.width = '32px';
         cursorRing.style.height = '32px';
         cursorRing.style.opacity = '1';
       });
@@ -167,17 +167,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------
-     6. CUSTOM PAGE SCROLL (mimics anchor links)
+     6. CUSTOM PAGE SCROLL
+     Snap-scrolls only the first 3 sections (hero, portafolio, servicios).
+     Once past those, native scrolling takes over.
   -------------------------------- */
+  const SNAPPED_SECTIONS = 3; // hero(0), portafolio(1), servicios(2)
   let isScrolling = false;
   let currentSectionIndex = 0;
   const sections = Array.from(document.querySelectorAll('section'));
 
   function updateCurrentSectionIndex() {
-    // Find which section is currently closest to the top of the screen
     let closestIndex = 0;
     let minDiff = Infinity;
-    
     sections.forEach((section, index) => {
       const diff = Math.abs(section.getBoundingClientRect().top);
       if (diff < minDiff) {
@@ -185,36 +186,44 @@ document.addEventListener('DOMContentLoaded', () => {
         closestIndex = index;
       }
     });
-    
     currentSectionIndex = closestIndex;
   }
 
-  // Keep track of section index when using anchor links natively
+  function isInSnapZone() {
+    // We're in snap zone if: viewing one of the first N sections,
+    // OR we're at the top of section N (scrolling back up into snap zone).
+    updateCurrentSectionIndex();
+    return currentSectionIndex < SNAPPED_SECTIONS;
+  }
+
+  // Sync index on anchor link clicks
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', () => {
       const targetId = link.getAttribute('href').substring(1);
-      const targetIndex = sections.findIndex(s => s.id === targetId);
-      if (targetIndex !== -1) {
-        currentSectionIndex = targetIndex;
-      }
+      const idx = sections.findIndex(s => s.id === targetId);
+      if (idx !== -1) currentSectionIndex = idx;
     });
   });
 
   window.addEventListener('wheel', (e) => {
-    e.preventDefault(); // Stop native scrolling
+    if (!isInSnapZone()) return; // let browser handle it natively
+    e.preventDefault();
     if (isScrolling) return;
+    if (Math.abs(e.deltaY) < 15) return;
 
-    // Small threshold to ignore micro-scroll accidental triggers
-    if (Math.abs(e.deltaY) < 15) return; 
-
-    updateCurrentSectionIndex();
-
-    if (e.deltaY > 0) { // Scroll down
-      if (currentSectionIndex < sections.length - 1) {
-        currentSectionIndex++;
-        scrollToCurrentSection();
+    if (e.deltaY > 0) {
+      // Scrolling down into a free section — release native scroll
+      if (currentSectionIndex >= SNAPPED_SECTIONS - 1) {
+        // Snap to the last snapped section boundary cleanly, then release
+        if (currentSectionIndex === SNAPPED_SECTIONS - 1) {
+          currentSectionIndex = SNAPPED_SECTIONS;
+          scrollToCurrentSection(); // jump to #estudio top, then native takes over
+        }
+        return;
       }
-    } else if (e.deltaY < 0) { // Scroll up
+      currentSectionIndex++;
+      scrollToCurrentSection();
+    } else if (e.deltaY < 0) {
       if (currentSectionIndex > 0) {
         currentSectionIndex--;
         scrollToCurrentSection();
@@ -225,41 +234,105 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStartY = 0;
   window.addEventListener('touchstart', e => {
     if (!isScrolling) {
-       updateCurrentSectionIndex();
-       touchStartY = e.touches[0].clientY;
+      updateCurrentSectionIndex();
+      touchStartY = e.touches[0].clientY;
     }
-  }, { passive: false });
-
-  window.addEventListener('touchmove', e => {
-    e.preventDefault(); // Stop native swipe scrolling
-  }, { passive: false });
+  }, { passive: true });
 
   window.addEventListener('touchend', e => {
-    if (isScrolling) return;
-    const touchEndY = e.changedTouches[0].clientY;
-    const deltaY = touchStartY - touchEndY;
-
-    if (deltaY > 50) { 
-      if (currentSectionIndex < sections.length - 1) {
-        currentSectionIndex++;
-        scrollToCurrentSection();
-      }
-    } else if (deltaY < -50) {
-      if (currentSectionIndex > 0) {
-        currentSectionIndex--;
-        scrollToCurrentSection();
-      }
+    if (isScrolling || !isInSnapZone()) return;
+    const deltaY = touchStartY - e.changedTouches[0].clientY;
+    if (deltaY > 50 && currentSectionIndex < sections.length - 1) {
+      currentSectionIndex++;
+      scrollToCurrentSection();
+    } else if (deltaY < -50 && currentSectionIndex > 0) {
+      currentSectionIndex--;
+      scrollToCurrentSection();
     }
-  }, { passive: false });
+  }, { passive: true });
 
   function scrollToCurrentSection() {
     isScrolling = true;
     sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
-    
-    // Lock scrolling until the smooth transition finishes (adjust timeout as needed)
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1100);
+    setTimeout(() => { isScrolling = false; }, 1100);
   }
+
+  /* --------------------------------
+     7. PROJECT MODAL & SLIDER
+  -------------------------------- */
+  const modal = document.getElementById('projectModal');
+  const sliderTrack = id => document.getElementById(id);
+  const track = sliderTrack('sliderTrack');
+  let currentSlide = 0;
+  let totalSlides = 0;
+
+  // Global functions to be accessible from HTML onclick (or attached via JS)
+  window.openModal = function(card) {
+    const data = card.dataset;
+    
+    // Fill text content
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalCategory').textContent = data.category;
+    document.getElementById('modalDesc').textContent = data.desc;
+    document.getElementById('modalLocation').textContent = data.location;
+    document.getElementById('modalYear').textContent = data.year;
+    document.getElementById('modalArea').textContent = data.area;
+
+    // Build slider
+    track.innerHTML = '';
+    const images = data.images.split(',');
+    totalSlides = images.length;
+    currentSlide = 0;
+    
+    images.forEach(imgSrc => {
+      const slide = document.createElement('div');
+      slide.className = 'slider-slide';
+      slide.innerHTML = `<img src="${imgSrc.trim()}" alt="${data.title}">`;
+      track.appendChild(slide);
+    });
+
+    updateSlider();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Lock scroll
+  };
+
+  window.closeModal = function() {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Unlock scroll
+  };
+
+  window.nextSlide = function() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSlider();
+    } else {
+      currentSlide = 0; // Loop to start
+      updateSlider();
+    }
+  };
+
+  window.prevSlide = function() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSlider();
+    } else {
+      currentSlide = totalSlides - 1; // Loop to end
+      updateSlider();
+    }
+  };
+
+  function updateSlider() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  // Attach click listener to cards since I used onclick in HTML template but better logic is card-based
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => window.openModal(card));
+  });
+
+  // Close on ESC key
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 
 });

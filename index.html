@@ -70,28 +70,22 @@
 
     <!-- Filtros de categoría -->
     <div style="display:flex; gap:24px; margin-bottom:24px; flex-wrap:wrap;">
-      <button class="filter-btn active" data-filter="all"
-        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-fg);border-bottom:1px solid var(--color-fg);padding-bottom:4px;">
-        Todos
-      </button>
-      <button class="filter-btn" data-filter="Residencial"
-        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
-        Residencial
-      </button>
-      <button class="filter-btn" data-filter="Comercial"
-        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
-        Comercial
-      </button>
-      <button class="filter-btn" data-filter="Institucional"
-        style="font-family:var(--font-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--color-muted);padding-bottom:4px;">
-        Institucional
-      </button>
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="Residencial">Residencial</button>
+      <button class="filter-btn" data-filter="Comercial">Comercial</button>
+      <button class="filter-btn" data-filter="Institucional">Institucional</button>
     </div>
 
     <div class="projects-grid">
 
       <!-- Proyecto 1 -->
-      <div class="project-card reveal delay-1" data-category="Residencial">
+      <div class="project-card reveal delay-1" data-category="Residencial"
+        data-title="Departamento Nva. Córdoba"
+        data-desc="Renovación integral de un departamento de 185m² en el corazón de Nueva Córdoba. Se priorizó la entrada de luz natural y la unificación de espacios sociales, integrando cocina y living para una experiencia de vida más fluida."
+        data-location="Córdoba, Argentina"
+        data-year="2024"
+        data-area="185 m²"
+        data-images="assets/project-1.jpg,assets/project-1.jpg,assets/project-1.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-1.jpg" alt="Departamento Nueva Córdoba" loading="lazy" />
           <div class="project-overlay">
@@ -111,7 +105,13 @@
       </div>
 
       <!-- Proyecto 2 -->
-      <div class="project-card reveal delay-2" data-category="Comercial">
+      <div class="project-card reveal delay-2" data-category="Comercial"
+        data-title="Oficinas Grupo Andino"
+        data-desc="Diseño de oficinas corporativas centradas en la colaboración. Espacios flexibles, salas de reunión vidriadas y zonas de descanso que fomentan la creatividad y el bienestar de los equipos."
+        data-location="Córdoba, Argentina"
+        data-year="2024"
+        data-area="420 m²"
+        data-images="assets/project-2.jpg,assets/project-2.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-2.jpg" alt="Oficinas Grupo Andino" loading="lazy" />
           <div class="project-overlay">
@@ -131,7 +131,13 @@
       </div>
 
       <!-- Proyecto 3 -->
-      <div class="project-card reveal delay-3" data-category="Institucional">
+      <div class="project-card reveal delay-3" data-category="Institucional"
+        data-title="Centro Cultural Municipal"
+        data-desc="Un hito arquitectónico para la ciudad, combinando la restauración de una estructura histórica con ampliaciones contemporáneas de acero y vidrio. Espacios para exposiciones, talleres y auditorio."
+        data-location="Córdoba, Argentina"
+        data-year="2023"
+        data-area="1.200 m²"
+        data-images="assets/project-3.jpg,assets/project-3.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-3.jpg" alt="Centro Cultural Municipal" loading="lazy" />
           <div class="project-overlay">
@@ -151,7 +157,13 @@
       </div>
 
       <!-- Proyecto 4 -->
-      <div class="project-card reveal delay-4" data-category="Residencial">
+      <div class="project-card reveal delay-4" data-category="Residencial"
+        data-title="Residencia Cerro de las Rosas"
+        data-desc="Vivienda unifamiliar de lenguaje minimalista. El proyecto se organiza en torno a un patio central que garantiza privacidad y ventilación cruzada en todas las estancias."
+        data-location="Córdoba, Argentina"
+        data-year="2023"
+        data-area="310 m²"
+        data-images="assets/project-4.jpg,assets/project-4.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-4.jpg" alt="Residencia Cerro de las Rosas" loading="lazy" />
           <div class="project-overlay">
@@ -170,6 +182,58 @@
         </div>
       </div>
 
+      <!-- Proyecto 5 -->
+      <div class="project-card reveal delay-5" data-category="Institucional"
+        data-title="Edificio Municipal Calamuchita"
+        data-desc="Sede administrativa diseñada para integrarse en el paisaje serrano. Uso de piedra local y grandes ventanales que enmarcan las vistas panorámicas del valle."
+        data-location="Córdoba, Argentina"
+        data-year="2023"
+        data-area="2.500 m²"
+        data-images="assets/project-5.jpg,assets/project-5.jpg">
+        <div class="project-img-wrap">
+          <img src="assets/project-5.jpg" alt="Edificio Municipal Calamuchita" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Edificio Municipal Calamuchita</h3>
+            <p class="project-category">Institucional</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2023</p>
+            <p class="project-area">2.500 m²</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 6 -->
+      <div class="project-card reveal delay-6" data-category="Comercial"
+        data-title="Showroom Mobiliario"
+        data-desc="Espacio comercial de estética industrial concebido como una caja blanca donde el producto es el protagonista. Iluminación técnica puntual y recorridos fluidos."
+        data-location="Córdoba, Argentina"
+        data-year="2024"
+        data-area="150 m²"
+        data-images="assets/project-6.jpg,assets/project-6.jpg">
+        <div class="project-img-wrap">
+          <img src="assets/project-6.jpg" alt="Showroom Mobiliario" loading="lazy" />
+          <div class="project-overlay">
+            <span class="project-overlay-label">Ver proyecto →</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <div>
+            <h3 class="project-title">Showroom Mobiliario</h3>
+            <p class="project-category">Comercial</p>
+          </div>
+          <div class="project-info">
+            <p class="project-year">2024</p>
+            <p class="project-area">150 m²</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -179,7 +243,7 @@
   ================================ -->
   <section id="servicios">
 
-    <div style="margin-bottom:80px;">
+    <div style="margin-bottom:32px;">
       <p class="label section-label reveal-fade">02 — Lo que hacemos</p>
       <h2 class="section-title reveal delay-2">Servicios</h2>
     </div>
@@ -320,6 +384,61 @@
 
   </section>
 
+
+  <!-- Modal de Proyecto -->
+  <div class="project-modal" id="projectModal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-slider">
+        <div class="slider-track" id="sliderTrack">
+          <!-- Imágenes se cargan dinámicamente -->
+        </div>
+        <div class="slider-nav">
+          <button class="slider-btn" onclick="prevSlide()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button class="slider-btn" onclick="nextSlide()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-sidebar">
+        <div>
+          <span class="modal-label" id="modalCategory">RESIDENCIAL</span>
+          <h2 class="modal-title" id="modalTitle">Nombre del Proyecto</h2>
+          <p class="modal-description" id="modalDesc">
+            Descripción detallada del proyecto aquí...
+          </p>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="info-item">
+            <span class="info-label">Ubicación</span>
+            <span class="info-value" id="modalLocation">Córdoba, Argentina</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Año</span>
+            <span class="info-value" id="modalYear">2024</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Superficie</span>
+            <span class="info-value" id="modalArea">185 m²</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
