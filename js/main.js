@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('wheel', (e) => {
+    if (window.innerWidth <= 768) return;
     if (!isInSnapZone()) return; // let browser handle it natively
     e.preventDefault();
     if (isScrolling) return;
@@ -244,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let touchStartY = 0;
   window.addEventListener('touchstart', e => {
+    if (window.innerWidth <= 768) return;
     if (!isScrolling) {
       updateCurrentSectionIndex();
       touchStartY = e.touches[0].clientY;
@@ -251,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   window.addEventListener('touchend', e => {
+    if (window.innerWidth <= 768) return;
     if (isScrolling || !isInSnapZone()) return;
     const deltaY = touchStartY - e.changedTouches[0].clientY;
     if (deltaY > 50 && currentSectionIndex < sections.length - 1) {
