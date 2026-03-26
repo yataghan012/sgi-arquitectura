@@ -166,4 +166,100 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* --------------------------------
+     6. CUSTOM PAGE SCROLL (mimics anchor links)
+  -------------------------------- */
+  let isScrolling = false;
+  let currentSectionIndex = 0;
+  const sections = Array.from(document.querySelectorAll('section'));
+
+  function updateCurrentSectionIndex() {
+    // Find which section is currently closest to the top of the screen
+    let closestIndex = 0;
+    let minDiff = Infinity;
+    
+    sections.forEach((section, index) => {
+      const diff = Math.abs(section.getBoundingClientRect().top);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = index;
+      }
+    });
+    
+    currentSectionIndex = closestIndex;
+  }
+
+  // Keep track of section index when using anchor links natively
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const targetId = link.getAttribute('href').substring(1);
+      const targetIndex = sections.findIndex(s => s.id === targetId);
+      if (targetIndex !== -1) {
+        currentSectionIndex = targetIndex;
+      }
+    });
+  });
+
+  window.addEventListener('wheel', (e) => {
+    e.preventDefault(); // Stop native scrolling
+    if (isScrolling) return;
+
+    // Small threshold to ignore micro-scroll accidental triggers
+    if (Math.abs(e.deltaY) < 15) return; 
+
+    updateCurrentSectionIndex();
+
+    if (e.deltaY > 0) { // Scroll down
+      if (currentSectionIndex < sections.length - 1) {
+        currentSectionIndex++;
+        scrollToCurrentSection();
+      }
+    } else if (e.deltaY < 0) { // Scroll up
+      if (currentSectionIndex > 0) {
+        currentSectionIndex--;
+        scrollToCurrentSection();
+      }
+    }
+  }, { passive: false });
+
+  let touchStartY = 0;
+  window.addEventListener('touchstart', e => {
+    if (!isScrolling) {
+       updateCurrentSectionIndex();
+       touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchmove', e => {
+    e.preventDefault(); // Stop native swipe scrolling
+  }, { passive: false });
+
+  window.addEventListener('touchend', e => {
+    if (isScrolling) return;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+
+    if (deltaY > 50) { 
+      if (currentSectionIndex < sections.length - 1) {
+        currentSectionIndex++;
+        scrollToCurrentSection();
+      }
+    } else if (deltaY < -50) {
+      if (currentSectionIndex > 0) {
+        currentSectionIndex--;
+        scrollToCurrentSection();
+      }
+    }
+  }, { passive: false });
+
+  function scrollToCurrentSection() {
+    isScrolling = true;
+    sections[currentSectionIndex].scrollIntoView({ behavior: 'smooth' });
+    
+    // Lock scrolling until the smooth transition finishes (adjust timeout as needed)
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1100);
+  }
+
 });
