@@ -40,9 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --------------------------------
-     3. NAVBAR — ocultar/mostrar en scroll
+     3. NAVBAR — ocultar/mostrar en scroll & menú responsive
   -------------------------------- */
   const nav = document.querySelector('nav');
+  const hamburger = document.querySelector('.hamburger');
+  const navLinksContainer = document.querySelector('.nav-links');
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinksContainer.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+      });
+    });
+  }
+
   let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
