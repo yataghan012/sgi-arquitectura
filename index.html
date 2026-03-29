@@ -11,26 +11,33 @@
 </head>
 
 <body>
+
   <!-- ================================
        HERO
+       Decisión: título dividido en spans para reveal palabra a palabra.
+       Más dramático que un fade global — cada palabra cae con peso propio.
   ================================ -->
   <section id="hero">
 
-    <!-- Fondo -->
     <div class="hero-bg">
       <img src="assets/hero-bg.jpg" alt="Arquitectura contemporánea" />
     </div>
 
-    <!-- Navegación -->
     <nav>
-      <!-- Reemplazar src con la ruta a tu logo real -->
       <img src="assets/logo.png" alt="SGI Arquitectura" class="nav-logo" />
-      <ul class="nav-links">
-        <li><a href="#portafolio">Portafolio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#estudio">Estudio</a></li>
-        <li><a href="#contacto" class="nav-cta">Agendar consulta</a></li>
-      </ul>
+
+      <div class="nav-menu">
+        <ul class="nav-links-left">
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#estudio">Estudio</a></li>
+        </ul>
+
+        <ul class="nav-links-right">
+          <li><a href="#contacto" class="nav-cta">Agendar consulta</a></li>
+        </ul>
+      </div>
+
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -38,16 +45,19 @@
       </div>
     </nav>
 
-    <!-- Contenido hero -->
     <div class="hero-content">
       <div>
         <span class="hero-line"></span>
         <p class="hero-location">Córdoba, Argentina</p>
+
+        <!-- Decisión: cada línea del título es un .word-row con clip-path reveal
+             Se ve como si las palabras emergieran desde abajo del piso — editorial puro. -->
         <h1 class="hero-title">
-          Diseñamos los<br>
-          <em>espacios que</em><br>
-          transforman
+          <span class="word-row"><span class="word-inner">Diseñamos los</span></span>
+          <span class="word-row"><span class="word-inner word-italic">espacios que</span></span>
+          <span class="word-row"><span class="word-inner">transforman</span></span>
         </h1>
+
         <a href="#portafolio" class="hero-cta-link">
           <span class="cta-line"></span>
           Ver portafolio
@@ -55,13 +65,17 @@
       </div>
     </div>
 
-
+    <!-- Decisión: indicador de scroll como número de sección flotante — 
+         común en estudios europeos top tier, da contexto sin ser obvio -->
+    <div class="hero-section-counter">01 / 04</div>
 
   </section>
 
 
   <!-- ================================
        PORTAFOLIO
+       Decisión: grid asimétrico — primer proyecto ocupa 2 columnas.
+       Rompe la monotonía del 3x2 uniforme y crea jerarquía editorial.
   ================================ -->
   <section id="portafolio">
 
@@ -73,8 +87,7 @@
       <span class="line-reveal section-header-line delay-4"></span>
     </div>
 
-    <!-- Filtros de categoría -->
-    <div style="display:flex; gap:24px; margin-bottom:24px; flex-wrap:wrap;">
+    <div class="filter-row">
       <button class="filter-btn active" data-filter="all">Todos</button>
       <button class="filter-btn" data-filter="Residencial">Residencial</button>
       <button class="filter-btn" data-filter="Comercial">Comercial</button>
@@ -83,13 +96,11 @@
 
     <div class="projects-grid">
 
-      <!-- Proyecto 1 -->
-      <div class="project-card reveal delay-1" data-category="Residencial"
+      <!-- Card featured — ocupa 2 columnas en desktop -->
+      <div class="project-card project-card--featured reveal delay-1" data-category="Residencial"
         data-title="Departamento Nva. Córdoba"
         data-desc="Renovación integral de un departamento de 185m² en el corazón de Nueva Córdoba. Se priorizó la entrada de luz natural y la unificación de espacios sociales, integrando cocina y living para una experiencia de vida más fluida."
-        data-location="Córdoba, Argentina"
-        data-year="2024"
-        data-area="185 m²"
+        data-location="Córdoba, Argentina" data-year="2024" data-area="185 m²"
         data-images="assets/project-1.jpg,assets/project-1.jpg,assets/project-1.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-1.jpg" alt="Departamento Nueva Córdoba" loading="lazy" />
@@ -109,13 +120,9 @@
         </div>
       </div>
 
-      <!-- Proyecto 2 -->
-      <div class="project-card reveal delay-2" data-category="Comercial"
-        data-title="Oficinas Grupo Andino"
+      <div class="project-card reveal delay-2" data-category="Comercial" data-title="Oficinas Grupo Andino"
         data-desc="Diseño de oficinas corporativas centradas en la colaboración. Espacios flexibles, salas de reunión vidriadas y zonas de descanso que fomentan la creatividad y el bienestar de los equipos."
-        data-location="Córdoba, Argentina"
-        data-year="2024"
-        data-area="420 m²"
+        data-location="Córdoba, Argentina" data-year="2024" data-area="420 m²"
         data-images="assets/project-2.jpg,assets/project-2.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-2.jpg" alt="Oficinas Grupo Andino" loading="lazy" />
@@ -135,13 +142,9 @@
         </div>
       </div>
 
-      <!-- Proyecto 3 -->
-      <div class="project-card reveal delay-3" data-category="Institucional"
-        data-title="Centro Cultural Municipal"
+      <div class="project-card reveal delay-3" data-category="Institucional" data-title="Centro Cultural Municipal"
         data-desc="Un hito arquitectónico para la ciudad, combinando la restauración de una estructura histórica con ampliaciones contemporáneas de acero y vidrio. Espacios para exposiciones, talleres y auditorio."
-        data-location="Córdoba, Argentina"
-        data-year="2023"
-        data-area="1.200 m²"
+        data-location="Córdoba, Argentina" data-year="2023" data-area="1.200 m²"
         data-images="assets/project-3.jpg,assets/project-3.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-3.jpg" alt="Centro Cultural Municipal" loading="lazy" />
@@ -161,13 +164,9 @@
         </div>
       </div>
 
-      <!-- Proyecto 4 -->
-      <div class="project-card reveal delay-4" data-category="Residencial"
-        data-title="Residencia Cerro de las Rosas"
+      <div class="project-card reveal delay-4" data-category="Residencial" data-title="Residencia Cerro de las Rosas"
         data-desc="Vivienda unifamiliar de lenguaje minimalista. El proyecto se organiza en torno a un patio central que garantiza privacidad y ventilación cruzada en todas las estancias."
-        data-location="Córdoba, Argentina"
-        data-year="2023"
-        data-area="310 m²"
+        data-location="Córdoba, Argentina" data-year="2023" data-area="310 m²"
         data-images="assets/project-4.jpg,assets/project-4.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-4.jpg" alt="Residencia Cerro de las Rosas" loading="lazy" />
@@ -187,13 +186,9 @@
         </div>
       </div>
 
-      <!-- Proyecto 5 -->
-      <div class="project-card reveal delay-5" data-category="Institucional"
-        data-title="Edificio Municipal Calamuchita"
+      <div class="project-card reveal delay-5" data-category="Institucional" data-title="Edificio Municipal Calamuchita"
         data-desc="Sede administrativa diseñada para integrarse en el paisaje serrano. Uso de piedra local y grandes ventanales que enmarcan las vistas panorámicas del valle."
-        data-location="Córdoba, Argentina"
-        data-year="2023"
-        data-area="2.500 m²"
+        data-location="Córdoba, Argentina" data-year="2023" data-area="2.500 m²"
         data-images="assets/project-5.jpg,assets/project-5.jpg">
         <div class="project-img-wrap">
           <img src="assets/project-5.jpg" alt="Edificio Municipal Calamuchita" loading="lazy" />
@@ -213,10 +208,9 @@
         </div>
       </div>
 
-      <!-- Proyecto 6 -->
-      <div class="project-card reveal delay-6" data-category="Comercial"
+      <!-- <div class="project-card reveal delay-1" data-category="Comercial"
         data-title="Showroom Mobiliario"
-        data-desc="Espacio comercial de estética industrial concebido como una caja blanca donde el producto es el protagonista. Iluminación técnica puntual y recorridos fluidos."
+        data-desc="Espacio de exhibición para una marca de mobiliario de diseño. La propuesta integra materialidad noble, iluminación puntual y recorridos que guían al visitante como si fuera una galería de arte."
         data-location="Córdoba, Argentina"
         data-year="2024"
         data-area="150 m²"
@@ -237,7 +231,7 @@
             <p class="project-area">150 m²</p>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section>
@@ -245,10 +239,13 @@
 
   <!-- ================================
        SERVICIOS
+       Decisión: descripción oculta por defecto, se revela en hover/tap.
+       Más limpio visualmente — el número y título tienen protagonismo total.
+       En mobile se muestra siempre para evitar frustración de UX.
   ================================ -->
   <section id="servicios">
 
-    <div style="margin-bottom:32px;">
+    <div class="services-header">
       <p class="label section-label reveal-fade">02 — Lo que hacemos</p>
       <h2 class="section-title reveal delay-2">Servicios</h2>
     </div>
@@ -256,29 +253,41 @@
     <div class="services-grid">
 
       <div class="service-item reveal delay-2">
-        <span class="service-number">01</span>
-        <h3 class="service-title">Arquitectura</h3>
+        <div class="service-top">
+          <span class="service-number">01</span>
+          <h3 class="service-title">Arquitectura</h3>
+          <span class="service-arrow">↗</span>
+        </div>
         <p class="service-desc">Proyecto completo, dirección técnica, documentación ejecutiva y gestión de obra para
           edificios residenciales, comerciales e institucionales.</p>
       </div>
 
       <div class="service-item reveal delay-3">
-        <span class="service-number">02</span>
-        <h3 class="service-title">Diseño de interiores</h3>
+        <div class="service-top">
+          <span class="service-number">02</span>
+          <h3 class="service-title">Diseño de interiores</h3>
+          <span class="service-arrow">↗</span>
+        </div>
         <p class="service-desc">Conceptualización espacial, selección de materialidades, diseño de mobiliario a medida e
           iluminación arquitectónica.</p>
       </div>
 
       <div class="service-item reveal delay-4">
-        <span class="service-number">03</span>
-        <h3 class="service-title">Consultoría técnica</h3>
+        <div class="service-top">
+          <span class="service-number">03</span>
+          <h3 class="service-title">Consultoría técnica</h3>
+          <span class="service-arrow">↗</span>
+        </div>
         <p class="service-desc">Auditorías de proyecto, optimización de costos, estudios de factibilidad y asesoramiento
           en normativas municipales.</p>
       </div>
 
       <div class="service-item reveal delay-5">
-        <span class="service-number">04</span>
-        <h3 class="service-title">Remodelaciones</h3>
+        <div class="service-top">
+          <span class="service-number">04</span>
+          <h3 class="service-title">Remodelaciones</h3>
+          <span class="service-arrow">↗</span>
+        </div>
         <p class="service-desc">Intervención integral en espacios existentes, puesta en valor patrimonial, ampliaciones
           y refuncionalización de inmuebles.</p>
       </div>
@@ -289,19 +298,33 @@
 
   <!-- ================================
        SOBRE NOSOTROS
+       Decisión: franja de imagen de fondo fija (placeholder) en columna izquierda.
+       Convierte la sección de texto plano en algo visualmente denso.
   ================================ -->
   <section id="estudio">
     <div class="about-grid">
 
-      <div>
+      <!-- Decisión: columna visual con imagen de estudio como fondo.
+           El cliente reemplaza assets/studio-bg.jpg con una foto real del equipo/espacio -->
+      <div class="about-visual">
+        <div class="about-visual-inner">
+          <img src="assets/about-slide-1.png" alt="Interior arquitectónico moderno" class="about-slide active" />
+          <img src="assets/about-slide-2.png" alt="Residencia contemporánea" class="about-slide" />
+          <img src="assets/about-slide-3.png" alt="Espacio de oficinas de diseño" class="about-slide" />
+          <div class="about-visual-label">
+            <span>SGI</span>
+            <span>Arquitectura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
         <p class="label section-label reveal-fade">03 — Sobre nosotros</p>
         <h2 class="section-title reveal delay-2">
           Cada espacio<br>
-          <em style="font-style:italic;">cuenta algo</em>
+          <em>cuenta algo</em>
         </h2>
-      </div>
 
-      <div>
         <p class="about-text reveal delay-3">
           SGI Arquitectura nace en Córdoba con una premisa clara: que la arquitectura no es solo
           estructura, sino la experiencia de quien la habita. Trabajamos con departamentos,
@@ -313,16 +336,17 @@
           eliminando la distancia entre la idea y la obra construida.
         </p>
 
+        <!-- Decisión: stats en columna vertical con separador, más elegante que row -->
         <div class="stats-row">
-          <div class="reveal delay-5">
+          <div class="stat-item reveal delay-5">
             <span class="stat-value">12+</span>
             <span class="stat-label">Años de experiencia</span>
           </div>
-          <div class="reveal delay-6">
+          <div class="stat-item reveal delay-6">
             <span class="stat-value">85</span>
             <span class="stat-label">Proyectos realizados</span>
           </div>
-          <div class="reveal delay-7">
+          <div class="stat-item reveal delay-7">
             <span class="stat-value">15k</span>
             <span class="stat-label">m² diseñados</span>
           </div>
@@ -339,7 +363,6 @@
   <section id="contacto">
     <div class="contact-grid">
 
-      <!-- Columna izquierda -->
       <div>
         <p class="label contact-label reveal-fade">04 — Contacto</p>
         <h2 class="contact-title reveal delay-2">
@@ -351,12 +374,13 @@
           Contanos sobre tu proyecto. Agendá una consulta inicial sin cargo
           y exploremos las posibilidades de tu espacio.
         </p>
-        <a href="mailto:info@sgiarquitectura.com" class="btn-outline reveal delay-6">
-          Agendar consulta
-        </a>
+        <div class="btn-outline-wrap reveal delay-6" id="ctaMagnetic">
+          <a href="mailto:info@sgiarquitectura.com" class="btn-outline">
+            Agendar consulta
+          </a>
+        </div>
       </div>
 
-      <!-- Columna derecha -->
       <div class="contact-info reveal delay-7">
         <div>
           <span class="contact-info-label">Email</span>
@@ -381,7 +405,6 @@
 
     </div>
 
-    <!-- Footer -->
     <footer class="reveal-fade delay-9">
       <p>© 2025 SGI Arquitectura. Todos los derechos reservados.</p>
       <p>Córdoba, Argentina</p>
@@ -395,38 +418,35 @@
     <div class="modal-overlay" onclick="closeModal()"></div>
     <div class="modal-container">
       <button class="modal-close" onclick="closeModal()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M18 6L6 18M6 6l12 12" />
         </svg>
       </button>
 
       <div class="modal-slider">
-        <div class="slider-track" id="sliderTrack">
-          <!-- Imágenes se cargan dinámicamente -->
-        </div>
+        <div class="slider-track" id="sliderTrack"></div>
         <div class="slider-nav">
           <button class="slider-btn" onclick="prevSlide()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
           <button class="slider-btn" onclick="nextSlide()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M9 18l6-6-6-6" />
             </svg>
           </button>
         </div>
+        <!-- Decisión: counter de slides visible, referencia a publicaciones de arquitectura -->
+        <div class="slide-counter" id="slideCounter">1 / 1</div>
       </div>
 
       <div class="modal-sidebar">
         <div>
           <span class="modal-label" id="modalCategory">RESIDENCIAL</span>
           <h2 class="modal-title" id="modalTitle">Nombre del Proyecto</h2>
-          <p class="modal-description" id="modalDesc">
-            Descripción detallada del proyecto aquí...
-          </p>
+          <p class="modal-description" id="modalDesc">Descripción detallada del proyecto aquí...</p>
         </div>
-
         <div class="modal-info-grid">
           <div class="info-item">
             <span class="info-label">Ubicación</span>
@@ -438,7 +458,7 @@
           </div>
           <div class="info-item">
             <span class="info-label">Superficie</span>
-            <span class="info-value" id="modalArea">185 m²</span>
+            <span class="info-value" id="modalArea">--</span>
           </div>
         </div>
       </div>
